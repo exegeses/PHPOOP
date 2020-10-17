@@ -1,2 +1,6 @@
 # PHPOOP
-Curso de PHP Object Oriented Programming - código 41118 
+> Curso de PHP Object Oriented Programming |   
+> Sábados 15hs a 18hs (Arg) |    
+> Código: 41118 |   
+> sensei: Marcos Pinardi |  
+

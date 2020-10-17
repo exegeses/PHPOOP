@@ -2,9 +2,9 @@
 
     require '../config/funciones.php';
     require 'Persona.php';
-    $Persona = new Persona;
-    $Persona->setNombre('Rick');
-    $Persona->setApellido('Sánchez');
+    $Persona = new Persona('Morty', 'Smith');
+    //$Persona->setNombre('Rick');
+    //$Persona->setApellido('Sánchez');
     mostrar($Persona);
 ?>
 <!doctype html>

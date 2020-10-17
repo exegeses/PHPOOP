@@ -2,9 +2,10 @@
 
     class Persona
     {
+        //const ESPECIE = 'humana';
         ### atributos
-        public $nombre;
-        public $apellido;
+        private $nombre;
+        private $apellido;
         
         ### métodos
         public function verDatos()

@@ -3,8 +3,9 @@
     require '../config/funciones.php';
     require 'Persona.php';
     $Persona = new Persona;
-
+    
     mostrar($Persona);
+
 ?>
 <!doctype html>
 <html lang="en">

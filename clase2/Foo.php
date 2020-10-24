@@ -27,4 +27,3 @@
     //$Foo->estatico();
 
     Foo::estatico();
-    

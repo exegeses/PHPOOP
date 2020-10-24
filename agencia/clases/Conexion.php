@@ -3,6 +3,9 @@
     class Conexion
     {
 
+        private function __construct()
+        {}
+
         static function conectar()
         {
             $link = new PDO(

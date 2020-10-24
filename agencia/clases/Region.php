@@ -16,6 +16,18 @@
             return $regiones;
         }
 
+        public function verRegionPorID($regID)
+        {
+            $link = Conexion::conectar();
+            $sql = 'SELECT regID, regNombre
+                        FROM regiones
+                        WHERE regID = '.$regID;
+            $stmt = $link->prepare($sql);
+            $stmt->execute();
+            $region = $stmt->fetch();
+            return $region;
+        }
+
         ###########################
         #### getters & setters
         /**

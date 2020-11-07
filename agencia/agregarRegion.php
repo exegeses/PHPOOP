@@ -13,10 +13,19 @@
     <main class="container">
         <h1>Alta de una nueva región</h1>
 
-        si (true)
-            reporte
-        sino
-            mensaje error
+<?php
+        $css = 'danger';
+        $mensaje = 'No se puedo agregar la región.';
+        if( $chequeo ){
+            $css = 'success';
+            $mensaje = 'Se ha agregado al región '.$Region->getRegNombre().' correctamente.'
+?>
+            <div class="alert alert-<?= $css ?> p-4">
+                <?= $mensaje ?>
+            </div>
+<?php
+        }
+?>
     </main>
 
 <?php

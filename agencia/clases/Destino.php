@@ -5,6 +5,7 @@
         private $destID;
         private $destNombre;
         private $regID;
+        static public $regNombre;
         private $destPrecio;
         private $destAsientos;
         private $destDisponibles;
@@ -26,6 +27,36 @@
             return $destinos;
         }
 
+        public function verDestinoPorID()
+        {
+            $destID = $_GET['destID'];
+            $link = Conexion::conectar();
+            $sql = "SELECT destID, destNombre, 
+                            d.regID, r.regNombre, 
+                            destPrecio, 
+                            destAsientos, destDisponibles, 
+                            destActivo 
+                        FROM destinos d, regiones r
+                        WHERE d.regID = r.regID
+                          AND d.destID = :destID";
+            $stmt = $link->prepare($sql);
+            $stmt->bindParam(':destID', $destID, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $destino = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $this->setDestID( $destID );
+            $this->setDestNombre($destino['destNombre']);
+            $this->setRegID($destino['regID']);
+            self::setRegNombre($destino['regNombre']);
+            $this->setDestPrecio($destino['destPrecio']);
+            $this->setDestAsientos($destino['destAsientos']);
+            $this->setDestDisponibles($destino['destDisponibles']);
+            $this->setDestActivo($destino['destActivo']);
+
+            return $this;
+        }
+        
         public function agregarDestino()
         {
             $destNombre = $_POST['destNombre'];
@@ -104,6 +135,22 @@
         public function setRegID($regID): void
         {
             $this->regID = $regID;
+        }
+
+        /**
+         * @return mixed
+         */
+        public static function getRegNombre()
+        {
+            return self::$regNombre;
+        }
+
+        /**
+         * @param mixed $regNombre
+         */
+        public static function setRegNombre($regNombre): void
+        {
+            self::$regNombre = $regNombre;
         }
 
         /**

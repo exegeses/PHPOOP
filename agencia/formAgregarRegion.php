@@ -9,7 +9,7 @@
     <main class="container">
             <h1>Alta de una nueva región</h1>
 
-            <div class="alert bg-light border shadow-sm border round p-4">
+            <div class="alert bg-light border border-white shadow-sm border round p-4">
 
                 <form action="agregarRegion.php" method="post">
 

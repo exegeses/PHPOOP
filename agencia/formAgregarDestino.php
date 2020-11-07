@@ -1,7 +1,10 @@
 <?php
 
     require 'config/config.php';
-
+    require 'clases/Conexion.php';
+    require 'clases/Region.php';
+    $Region = new Region;
+    $regiones = $Region->listarRegiones();
     include 'includes/over-all-header.html';
     include 'includes/nav.php';
 ?>
@@ -9,7 +12,7 @@
     <main class="container">
             <h1>Alta de un nuevo destino</h1>
 
-            <div class="alert bg-light border border-white border round p-4">
+            <div class="alert bg-light border border-white shadow-sm round p-4">
 
                 <form action="agregarDestino.php" method="post">
 
@@ -25,6 +28,13 @@
                     <select name="regID" id="regID" 
                             class="form-control" required>
                         <option value="">Seleccione una región</option>
+<?php
+                    foreach ( $regiones as $region ){
+?>
+                        <option value="<?= $region['regID'] ?>"><?= $region['regNombre'] ?></option>
+<?php
+                    }
+?>
                     </select>
                     </div>
 

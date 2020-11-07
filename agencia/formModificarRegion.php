@@ -3,9 +3,8 @@
     require 'config/config.php';
     require 'clases/Conexion.php';
     require 'clases/Region.php';
-    $regID = $_GET['regID'];
     $Region = new Region;
-    $Region->verRegionPorID($regID);
+    $Region->verRegionPorID();
     include 'includes/over-all-header.html';
     include 'includes/nav.php';
 ?>

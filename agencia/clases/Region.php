@@ -16,8 +16,9 @@
             return $regiones;
         }
 
-        public function verRegionPorID($regID)
+        public function verRegionPorID()
         {
+            $regID = $_GET['regID'];
             $link = Conexion::conectar();
             $sql = 'SELECT regID, regNombre
                         FROM regiones
@@ -48,6 +49,26 @@
                 //registramos atributos en el objeto
                 $this->setRegNombre($regNombre);
                 $this->setRegID( $link->lastInsertId() );
+                return $this;
+            }
+            return false;
+        }
+
+        public function modificarRegion()
+        {
+            $regID = $_POST['regID'];
+            $regNombre = $_POST['regNombre'];
+            $link = Conexion::conectar();
+            $sql = "UPDATE regiones
+                        SET regNombre = ?
+                        WHERE regID = ?";
+            $stmt = $link->prepare($sql);
+            $stmt->bindParam(1, $regNombre, PDO::PARAM_STR);
+            $stmt->bindParam(2, $regID, PDO::PARAM_INT);
+
+            if( $stmt->execute() ){
+                $this->setRegID($regID);
+                $this->setRegNombre($regNombre);
                 return $this;
             }
             return false;
